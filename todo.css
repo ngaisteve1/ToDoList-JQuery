@@ -1,0 +1,14 @@
+div#main{
+    max-width: 500px;
+    margin: 0 auto;
+    border:2px dashed silver;
+    min-height: 500px;
+    padding:10px;
+}
+
+.del{
+    background: none;
+    color:red;
+    border:none;
+    margin-left:10px;
+}

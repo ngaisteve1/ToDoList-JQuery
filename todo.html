@@ -1,1 +1,56 @@
-<html></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>To Do List with JQuery by Steve Ngai</title>
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Font Awesome Icon -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="todo.css">
+</head>
+
+<body>
+
+
+    <div id="main">
+        <h1>To Do List</h1>
+        <!--1. Create user interface-->
+        <!--Input-->
+        <div class="input-group">
+            <input id="todo" type="text" class="form-control" placeholder="New Item" />
+            <span class="input-group-btn">
+                <button id="btn" class="btn btn-default" type="submit">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </span>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"><span id="totalItemAdded"></span></div>
+                <div class="col-md-6"><span class="pull-right"><a id="clearAll"
+                            style="color:red;cursor: pointer;">Delete All Items</a></span></div>
+            </div>
+        </div>
+        <div id="result">
+            <!--Output-->
+            <ul id="toDoList"></ul>
+        </div>
+        <!-- <p class="mesg alert alert-success"></p> -->
+
+    </div>
+
+</body>
+
+</html>
+<!-- jQuery Plugins -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="todo.js"></script>
