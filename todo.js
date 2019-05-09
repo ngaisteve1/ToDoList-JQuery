@@ -2,54 +2,97 @@ $(function () {
     // Make sure JQuery loaded successfully before coding.
     console.log('JQuery loaded');
 
-        // Create the EventListener to listen
-        // to click event for Add button
-        $('#btnAdd').click(function () {
-            console.log('Add button clicked');
+    // Initialize
+    const init = () => {
+        if ($("#toDoList").children().length === 0) {
+            $('#btnClearAll').hide();
+        }
 
-            var toDoItem = $('#todo').val();
-            if(toDoItem === "" || toDoItem.length === 0){
-                return;
-            }
-            console.log(toDoItem);
+        if ($('.mesg').text() === "") {
+            $('.mesg').hide();
+        }
+    }
+    init();
 
-            // Create a new object with a pair of list tag
-            // Insert toDoItem into it
-            // Note: Here the $ is a 'creation', not 'selection'
-            var toDoItemElement = $('<li></li>').text(toDoItem);
-            // Output will be 
-            // <li>test data</li>
+    // Create the EventListener to listen
+    // to click event for Add button
+    $('#btnAdd').click(function () {
+        console.log('Add button clicked');
 
-            // Append a delete button
-            $(toDoItemElement).append("<button class='del'>x</button>");
+        var toDoItem = $('#todo').val();
+        if (toDoItem === "" || toDoItem.length === 0) {
+            return;
+        }
+        console.log(toDoItem);
 
-            // Append it to ol tag. 
-            $('#toDoList').append(toDoItemElement);
-            // Output will be 
-            // <ol>
-            //     <li>test data</li>
-            // </ol>
+        $('#btnClearAll').show();
+        
+        // Create a new object with a pair of list tag
+        // Insert toDoItem into it
+        // Note: Here the $ is a 'creation', not 'selection'
+        var toDoItemElement = $('<li></li>').text(toDoItem);
+        // Output will be 
+        // <li>test data</li>
 
-            // Test it
+        // Append a delete button
+        $(toDoItemElement).append("<button class='del'>x</button>");
 
-            // Go back to toDoItemElement to append delete button tag 
-            // before append to toDoList ol tag.
+        // Append it to ol tag. 
+        $('#toDoList').append(toDoItemElement);
+        // Output will be 
+        // <ol>
+        //     <li>test data</li>
+        // </ol>
 
-            // Clear the textbox once done
-            $('#todo').val("");
+        // Test it
 
-            // Go back delete button and add a class called 'del'
-            // Create the event handler for delete button click
-            $('.del').click(function(){
-                console.log('Delete button clicked');
-                $(this).parent().remove();
-            })
+        // Go back to toDoItemElement to append delete button tag 
+        // before append to toDoList ol tag.
 
-            // Go back to validate textbox before process
+        // Clear the textbox once done
+        $('#todo').val("");
 
-            // Beautify the delete button css
-
-            // Add Delete All button and Show item count
-
+        // Go back delete button and add a class called 'del'
+        // Create the event handler for delete button click
+        $('.del').click(function () {
+            console.log('Delete button clicked');
+            $(this).parent().remove();
+            updateItemCount();            
         })
+
+        // Go back to validate textbox before process
+
+        // Beautify the delete button css
+
+        // Add Delete All button and Show item count
+
+        updateItemCount();
+
+    })
+
+    $('#btnClearAll').click(function () {
+        if ($("#toDoList").children().length > 0) {
+            // $("#toDoList").children().remove();
+            $("#toDoList").empty();
+            $('.mesg').show();
+            $('.mesg').text("All items deleted.").fadeOut(2000);
+        } else {
+            $('.mesg').show();
+            $('.mesg').text("No item to delete.").fadeOut(2000);
+        }
+        $('#btnClearAll').hide();
+    })
+
+    const updateItemCount = () => {
+        $('#totalItems').text("Total Items: " + $("#toDoList").children().length);
+
+        if ($("#toDoList").children().length > 0) {
+            $("#btnClearAll").show();
+            $("#totalItems").show();
+        } else {
+            $("#btnClearAll").hide();
+            $("#totalItems").hide();
+        }
+    }
+
 })
