@@ -4,7 +4,7 @@ $(function () {
 
         // Create the EventListener to listen
         // to click event for Add button
-        $('#btn').click(function () {
+        $('#btnAdd').click(function () {
             console.log('Add button clicked');
 
             var toDoItem = $('#todo').val();
