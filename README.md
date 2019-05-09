@@ -11,7 +11,7 @@
 ### Software Development Summary
 - Technology: Javascript
 - Framework / Library: JQuery
-- IDE: Visual Studio Code (Version 1.31.1)
+- IDE: Visual Studio Code (Version 1.33.1)
 
 ### Javascript / JQuery technique used
 - Some JQuery function used: append(), parent(), children(), remove(), show(), hide(), fadeOut()
