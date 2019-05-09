@@ -2,17 +2,21 @@ $(function () {
     // Make sure JQuery loaded successfully before coding.
     console.log('JQuery loaded');
 
-    // Initialize
-    const init = () => {
-        if ($("#toDoList").children().length === 0) {
-            $('#btnClearAll').hide();
-        }
+    const updateItemCount = () => {
+        $('#totalItems').text("Total Items: " + $("#toDoList").children().length);
+    }
 
-        if ($('.mesg').text() === "") {
-            $('.mesg').hide();
+    const showHideItemCountClearAll = () =>{
+        if ($("#toDoList").children().length > 0) {
+            $("#btnClearAll").show();
+            $("#totalItems").show();
+        } else {
+            $("#btnClearAll").hide();
+            $("#totalItems").hide();
         }
     }
-    init();
+
+    
 
     // Create the EventListener to listen
     // to click event for Add button
@@ -58,6 +62,7 @@ $(function () {
             console.log('Delete button clicked');
             $(this).parent().remove();
             updateItemCount();            
+            showHideItemCountClearAll();
         })
 
         // Go back to validate textbox before process
@@ -67,32 +72,30 @@ $(function () {
         // Add Delete All button and Show item count
 
         updateItemCount();
-
+        showHideItemCountClearAll();
     })
 
     $('#btnClearAll').click(function () {
-        if ($("#toDoList").children().length > 0) {
-            // $("#toDoList").children().remove();
+        $('.mesg').show();        
+        if ($("#toDoList").children().length > 0) {            
             $("#toDoList").empty();
-            $('.mesg').show();
+            // or $("#toDoList").children().remove();
+
             $('.mesg').text("All items deleted.").fadeOut(2000);
         } else {
-            $('.mesg').show();
             $('.mesg').text("No item to delete.").fadeOut(2000);
         }
-        $('#btnClearAll').hide();
+        showHideItemCountClearAll();
     })
 
-    const updateItemCount = () => {
-        $('#totalItems').text("Total Items: " + $("#toDoList").children().length);
+    // Initialize
+    const init = () => {
+        showHideItemCountClearAll();
 
-        if ($("#toDoList").children().length > 0) {
-            $("#btnClearAll").show();
-            $("#totalItems").show();
-        } else {
-            $("#btnClearAll").hide();
-            $("#totalItems").hide();
+        if ($('.mesg').text() === "") {
+            $('.mesg').hide();
         }
     }
+    init();
 
 })
