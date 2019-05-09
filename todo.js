@@ -6,7 +6,7 @@ $(function () {
         $('#totalItems').text("Total Items: " + $("#toDoList").children().length);
     }
 
-    const showHideItemCountClearAll = () =>{
+    const showHideItemCountClearAll = () => {
         if ($("#toDoList").children().length > 0) {
             $("#btnClearAll").show();
             $("#totalItems").show();
@@ -16,7 +16,7 @@ $(function () {
         }
     }
 
-    
+
 
     // Create the EventListener to listen
     // to click event for Add button
@@ -30,7 +30,7 @@ $(function () {
         console.log(toDoItem);
 
         $('#btnClearAll').show();
-        
+
         // Create a new object with a pair of list tag
         // Insert toDoItem into it
         // Note: Here the $ is a 'creation', not 'selection'
@@ -61,7 +61,10 @@ $(function () {
         $('.del').click(function () {
             console.log('Delete button clicked');
             $(this).parent().remove();
-            updateItemCount();            
+
+            $('.mesg').show();
+            $('.mesg').text("Item deleted.").fadeOut(2000);
+            updateItemCount();
             showHideItemCountClearAll();
         })
 
@@ -76,8 +79,8 @@ $(function () {
     })
 
     $('#btnClearAll').click(function () {
-        $('.mesg').show();        
-        if ($("#toDoList").children().length > 0) {            
+        $('.mesg').show();
+        if ($("#toDoList").children().length > 0) {
             $("#toDoList").empty();
             // or $("#toDoList").children().remove();
 
@@ -87,6 +90,29 @@ $(function () {
         }
         showHideItemCountClearAll();
     })
+
+    $('#todo').on("keydown keypress", checkTextBox);
+
+    function checkTextBox() {
+        const textBoxLength = $('#todo').val().length;
+
+        if (textBoxLength < 2) {
+            $("#btnAdd").prop("disabled", true);
+
+        } else {
+            $("#btnAdd").prop("disabled", false);
+        }
+    }
+
+    // If user press keyboard enter key, it will trigger the Add button.
+    $('#todo').keypress(function (e) {
+        console.log('keypress');
+        if (e.which == 13) {//Enter key pressed
+            console.log('entered.');
+            $('#btnAdd').click();//Trigger search button click event
+        }
+    });
+
 
     // Initialize
     const init = () => {
