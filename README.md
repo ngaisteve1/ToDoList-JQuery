@@ -21,7 +21,7 @@
 ### User interface
 - Implement Bootstrap framework for forms and labels
 - Font Awesome icon
-- mobile responsive
+- Mobile responsive
 
 ### Video Demo
 - [To Do List with JQuery](https://youtu.be/L2OuJMdIt9M)
