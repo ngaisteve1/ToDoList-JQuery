@@ -15,7 +15,7 @@
 
 ### Javascript / JQuery technique used
 - Some JQuery function used: append(), parent(), children(), remove(), show(), hide(), fadeOut()
-- Event Listener: textbox keypress, button click
+- Event Listener: textbox keypress, button click, enter key
 - Note: Data is stored and passed as object (memory).
 
 ### User interface
