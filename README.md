@@ -1,6 +1,6 @@
 # ToDoList-JQuery
 
-### [Try it out](http://js.findingsteve.net/ToDoList.cshtml)
+### [Try it out](https://ngaisteve1.github.io/ToDoList-JQuery/todo.html)
 
 ### Features
 - Add one item
